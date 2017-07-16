@@ -1,5 +1,6 @@
 var builder = require('botbuilder');
 var request = require("request-promise");
+var moment = require('moment');
 
 // var reply = require('../utility/reply');
 
@@ -7,7 +8,10 @@ module.exports = [
   async(session, args, next) => {
     // var entityList = session.message.entities;
 
-    var date = encodeURIComponent('2017/07/16');
+    var today = '2017/07/23';
+    // var today = moment().format('YYYY/MM/DD');
+    var date = encodeURIComponent(today);
+    console.log(date);
 
     var body = await request.get('http://gameprice.tw/opendata/ticket?date=' + date);
 
@@ -15,21 +19,33 @@ module.exports = [
 
     var attachments = [];
     console.log('res', res);
+    var template = `故宮南院 常設展 \n\n
+    ${today} 可預約時間 \n\n
+     \n\n`;
+
     if (res.data.length) {
-      res.data.forEach(function (w) {
-        var card = createThumbnailCard(session, w);
-        attachments.push(card);
-      });
+      // res.data.forEach(function (w) {
+        // var card = createThumbnailCard(session, w);
+      //   attachments.push(card);
+      // });
+      for (var x = 0; x < res.data.length; x++) {
+        var time = res.data[x].time.slice(0, 2) + ':' + res.data[x].time.slice(2, 4);
+        template = template + `${time} - ${res.data[x].ticket} 張票 \n\n`;
+      }
+      template = template + `可以在以下網站預約 \n\n
+      https://tickets.npm.gov.tw/ \n\n`;
+      session.send(template);
+      session.endDialog();
+      
     } else {
       session.send('很抱歉~預約已滿');
       session.endDialog();
     }
 
-    var reply = new builder.Message(session)
-      .attachmentLayout(builder.AttachmentLayout.carousel)
-      .attachments(attachments);
-    session.send(reply);
-    session.endDialog();
+    // var reply = new builder.Message(session)
+      // .attachmentLayout(builder.AttachmentLayout.carousel)
+      // .attachments(attachments);
+    // session.send(reply);
 
   }
 ];
