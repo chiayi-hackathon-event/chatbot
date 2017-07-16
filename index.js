@@ -68,11 +68,9 @@ var intent = new builder.IntentDialog({ recognizers: [recognizer] });
 bot.dialog('/', intent);
 
 bot.dialog('/askhotspot', require('./dialog/askhotspot'));
-// bot.dialog('/checkreservation', require('./dialog/checkreservation'));
 
 bot.dialog('/askfortuneproduct', require('./dialog/askfortuneproduct'));
 bot.dialog('/listFeature', require('./dialog/listfeature'));
-// bot.dialog('/today', require('./intents/today'));
 bot.dialog('/findsuitme', require('./intents/findsuitme'));
 bot.dialog('/adopt', require('./intents/adopt'));
 bot.dialog('/findhotel', require('./intents/findhotel'));
@@ -89,7 +87,6 @@ bot.dialog('/FindCharging', require('./intents/findchargingstation'));
 bot.dialog('/TWFunStore', require('./intents/findtwfunstore'));
 bot.dialog('/checkreservation', require('./intents/reservation'));
 bot.dialog('/findfood', require('./intents/findfood'));
-// bot.dialog('/findhotel', require('./intents/findhotel'));
 bot.dialog('/askFBLocation', [
   function(session, args, next) {
     if(session.userData.forcegps == null && session.userData.latitude != null && session.userData.longitude != null) {
@@ -113,9 +110,6 @@ bot.dialog('/askFBLocation', [
 
       var entityList = session.message.entities;
 
-      // var latitude = '23.4731294';
-      // var longitude = '120.29271649999998';
-
       if (Array.isArray(entityList) && entityList.length > 0) {
         var latitude = entityList[0].geo.latitude;
         var longitude = entityList[0].geo.longitude;
@@ -136,12 +130,7 @@ require('./intents/gossip')(intent);
 intent.matches('FindHotSpotByImg', '/askhotspot');
 intent.matches('CheckReservation', '/checkreservation');
 
-// intent.matches('FindProduct', require('./intents/findproduct'));
 intent.matches('TellTired', require('./intents/tired'));
-// intent.matches('Boring', require('./intents/boring'));
-// intent.matches('WhoIsBeautiful', require('./intents/whoisbeautiful'));
-// intent.matches('RankProduct', require('./intents/rankproduct'));
-// intent.matches('GroupBuy', require('./intents/groupbuy'));
 intent.matches('FindHotSpotByLocation', '/HotSpotLocation');
 intent.matches('FindChargingStation', '/FindCharging');
 intent.matches('FindTWFunStore', '/TWFunStore');
@@ -159,15 +148,11 @@ intent.matches('Compliment', [
   }
 ]);
 
-
-
 intent.matches('FindSuitMe', '/findsuitme');
-// intent.matches('ListFeatures', '/listFeature');
 intent.matches('Adopt', '/adopt');
 intent.matches('FortuneTeller', '/fortuneTeller');
 intent.matches('WeatherForecast', '/weatherForecast');
 intent.matches('FindFood', '/findfood');
 intent.matches('FindHotel', '/findhotel');
-// intent.matches('Today', '/today');
 
 intent.onDefault(require('./intents/default'));

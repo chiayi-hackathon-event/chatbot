@@ -7,16 +7,6 @@ var fortuneTeller = require('./fortune');
 
 module.exports = [
   async(session, args, next) => {
-    // var message = new builder.Message(session)
-    //   .text("麻煩先請按下按鈕傳送你的位置")
-    //   .sourceEvent({
-    //     facebook: {
-    //       "quick_replies": [{
-    //         "content_type": "location",
-    //       }]
-    //     }
-    //   })
-    // builder.Prompts.text(session, message);
     session.userData.forcegps = true;
     session.beginDialog('/askFBLocation');
   },
@@ -26,9 +16,6 @@ module.exports = [
     var latitude = '23.4243634';
     var longitude = '119.977076';
 
-    // if (Array.isArray(entityList) && entityList.length > 0) {
-    //   latitude = entityList[0].geo.latitude;
-    //   longitude = entityList[0].geo.longitude;
     if(session.userData.latitude != null) {
       latitude = session.userData.latitude;
       longitude = session.userData.longitude;
@@ -112,8 +99,6 @@ function createThumbnailCard(session, weather) {
 * 降雨率 : ${weather.precipProbability.toFixed(2) * 100}%
 * ${windStatus}
       `)
-    // * 濕度 : ${weather.humidity * 100}%
-    //   * 風速 : ${weather.windSpeed}m/s
     .images([
       builder.CardImage.create(session, image)
     ])
