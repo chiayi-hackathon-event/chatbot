@@ -31,3 +31,7 @@ OpenData List
 6.天氣資訊 https://darksky.net/forecast/23.5,121/si24/en
 
 7.故宮南院 http://south.npm.gov.tw/zh-tw
+
+8.台灣好玩卡 
+http://www.funcard.tw
+http://ct-pass.com/about
