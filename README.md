@@ -1,5 +1,16 @@
 # wonder_woman
-bot
+作品名：蓋兒帶你遊台灣-口袋旅遊達人
+
+作品連結：
+Facebook粉絲團
+https://www.facebook.com/TWWonderWoman/
+
+Facebook Messenger
+http://m.me/TWWonderWoman
+
+Power BI 
+https://goo.gl/pw5yNy
+
 
 OpenData List
 
