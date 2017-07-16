@@ -37,6 +37,8 @@ module.exports = session => {
 
       var tag = Predictions[0].Tag;
 
+      session.send('這是' + tag + '喔');
+
       var body = await request.get(`http://gameprice.tw/opendata/attractions?lat=23.143661&lng=120.143555&distance=100000000&desc=${encodeURI(tag)}&limit=5`);
       var data = JSON.parse(body).data[0];
 
@@ -53,7 +55,6 @@ module.exports = session => {
       var msg = new builder.Message(session).addAttachment(card);
       session.send(msg);
 
-      session.send('這是' + tag);
     });
   } else {
     console.log(session.message);
