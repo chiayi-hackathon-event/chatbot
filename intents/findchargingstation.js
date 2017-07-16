@@ -1,3 +1,4 @@
+var apiurl = require('../utility/apiurl');
 var builder = require('botbuilder');
 var request = require("request-promise");
 
@@ -23,17 +24,17 @@ module.exports = [
   async(session, results) => {
     var entityList = session.message.entities;
 
-    var latitude = '23.0251582';
-    var longitude = '120.2351534';
+    var latitude = '23.4518428';
+    var longitude = '120.25546150000002';
 
     if (Array.isArray(entityList) && entityList.length > 0) {
       latitude = entityList[0].geo.latitude;
       longitude = entityList[0].geo.longitude;
     } else {
-      session.send('那使用台南市的位置吧!');
+      session.send('那使用嘉義縣的位置吧!');
     }
 
-    var body = await request.get('http://gameprice.tw/opendata/power?lat=' + latitude + '&lng=' + longitude + '&limit=5&distance=10000');
+    var body = await request.get(apiurl + '/power?lat=' + latitude + '&lng=' + longitude + '&limit=5&distance=10000');
 
     var res = JSON.parse(body);
 

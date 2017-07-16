@@ -1,3 +1,4 @@
+var apiurl = require('../utility/apiurl');
 var builder = require('botbuilder');
 var req = require("request");
 var request = require("request-promise");
@@ -14,7 +15,7 @@ module.exports = [
   },
   async(session, results) => {
     console.log('results', results.response);
-    var url = 'https://gameprice.tw/opendata/coordinate?address=' + encodeURI(results.response);
+    var url = apiurl + '/coordinate?address=' + encodeURI(results.response);
 
 
     var geo = await request.get(url);
@@ -24,7 +25,7 @@ module.exports = [
       var latitude = data.data.lat;
       var longitude = data.data.lng;
 
-      var body = await request.get('http://gameprice.tw/opendata/attractions?lat=' + latitude + '&lng=' + longitude + '&limit=5&distance=10000');
+      var body = await request.get(apiurl + '/attractions?lat=' + latitude + '&lng=' + longitude + '&limit=5&distance=10000');
 
       var res = JSON.parse(body);
       var attachments = [];

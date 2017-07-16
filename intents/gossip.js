@@ -1,3 +1,5 @@
+var NICKNAME = require('../utility/nickname');
+
 module.exports = (intent) => {
   intent.matches(/哈囉你好嗎/i, (session, args) => {
     session.send('衷心感謝~');
@@ -12,11 +14,11 @@ module.exports = (intent) => {
   });
 
   intent.matches(/^.*幾歲.*$/i, (session, args) => {
-    session.send('仙女永遠都是18歲');
+    session.send(NICKNAME + '永遠都是18歲');
   });
 
   intent.matches(/^.*笨.*$/i, (session, args) => {
-    session.send('別罵仙女笨拉...');
+    session.send('別罵' + NICKNAME + '笨拉...');
   });
 
   intent.matches(/^.*笑話.*$/i, (session, args) => {
@@ -49,11 +51,11 @@ module.exports = (intent) => {
   });
 
   intent.matches(/^.*上傳.*$/i, (session, args) => {
-    session.send('直接點選你要上傳的照片給仙女吧');
+    session.send('直接點選你要上傳的照片給' + NICKNAME + '吧');
   });
 
   intent.matches(/^.*按摩.*$/i, (session, args) => {
-    session.send('小仙女不熟按摩拉><');
+    session.send(NICKNAME + '不熟按摩拉><');
   });
 
   intent.matches(/^.*包多少.*$/i, (session, args) => {

@@ -1,3 +1,4 @@
+var apiurl = require('../utility/apiurl');
 var builder = require('botbuilder');
 var request = require("request-promise");
 
@@ -18,7 +19,7 @@ module.exports = [
     //   session.send('那使用嘉義縣的位置吧!');
     // }
 
-    var body = await request.get('http://gameprice.tw/opendata/store?lat=' + latitude + '&lng=' + longitude + '&limit=10&distance=100000');
+    var body = await request.get(apiurl + '/store?lat=' + latitude + '&lng=' + longitude + '&limit=10&distance=100000');
 
     var res = JSON.parse(body);
 

@@ -1,3 +1,4 @@
+var NICKNAME = require('../utility/nickname');
 var builder = require('botbuilder');
 
 var reply = require('../utility/reply');
@@ -35,7 +36,7 @@ module.exports = [
           "Solo Kaffe 單杯咖啡機",
         ];
 
-        message.text('你運氣也太好了! 要不要再搭配仙女的乘勝追擊小魔法?');
+        message.text('你運氣也太好了! 要不要再搭配' + NICKNAME + '的乘勝追擊小魔法?');
         break;
 
       case '02':
@@ -53,7 +54,7 @@ module.exports = [
         ];
 
 
-        message.text('你運氣也太好了! 要不要再搭配仙女的乘勝追擊小魔法?');
+        message.text('你運氣也太好了! 要不要再搭配' + NICKNAME + '的乘勝追擊小魔法?');
         break;
       case '03':
         datas = [
@@ -69,7 +70,7 @@ module.exports = [
           "TESCOM 白金奈米膠原蛋白吹風機",
         ];
 
-        message.text('你運氣也太好了! 要不要再搭配仙女的乘勝追擊小魔法?');
+        message.text('你運氣也太好了! 要不要再搭配' + NICKNAME + '的乘勝追擊小魔法?');
       case '04':
         datas = [
           "飛利浦 嫩白緊緻煥膚儀",
@@ -84,7 +85,7 @@ module.exports = [
           "窈窕美臀機",
         ];
 
-        message.text('你運氣也太好了! 要不要再搭配仙女的乘勝追擊小魔法?');
+        message.text('你運氣也太好了! 要不要再搭配' + NICKNAME + '的乘勝追擊小魔法?');
         break;
       case '05':
         datas = [
@@ -99,7 +100,7 @@ module.exports = [
           "飛利浦 迪士尼 毛怪",
           "健身大師 全方位舞動魔力板",
         ];
-        message.text('普普通通嗎? 要不要試試仙女的小確幸秘方?');
+        message.text('普普通通嗎? 要不要試試' + NICKNAME + '的小確幸秘方?');
         break;
       case '06':
         datas = [
@@ -115,7 +116,7 @@ module.exports = [
           "牙醫級氣壓式免插電便攜型強力沖牙器",
         ];
 
-        message.text('運氣指數有點不太好... 要不要看看仙女的開運小物?');
+        message.text('運氣指數有點不太好... 要不要看看' + NICKNAME + '的開運小物?');
         break;
       case '07':
         datas = [
@@ -131,7 +132,7 @@ module.exports = [
           "Zero零感肌瞬卸凝霜",
         ];
 
-        message.text('運氣指數有點不太好... 要不要看看仙女的開運小物?');
+        message.text('運氣指數有點不太好... 要不要看看' + NICKNAME + '的開運小物?');
         break;
       case '08':
         datas = [
@@ -147,7 +148,7 @@ module.exports = [
           "Ora2 極緻香水漱口水",
         ];
 
-        message.text('運氣指數有點不太好... 要不要看看仙女的開運小物?');
+        message.text('運氣指數有點不太好... 要不要看看' + NICKNAME + '的開運小物?');
         break;
       case '09':
         datas = [
@@ -163,7 +164,7 @@ module.exports = [
           "breo 眼部按摩器",
         ];
 
-        message.text('運氣指數很糟糕耶... 要不要看看仙女的轉運聖物?');
+        message.text('運氣指數很糟糕耶... 要不要看看' + NICKNAME + '的轉運聖物?');
         break;
       case '10':
         datas = [
@@ -179,7 +180,7 @@ module.exports = [
           "紓壓指尖陀螺",
         ];
 
-        message.text('運氣指數很糟糕耶... 要不要看看仙女的轉運聖物?');
+        message.text('運氣指數很糟糕耶... 要不要看看' + NICKNAME + '的轉運聖物?');
         break;
     }
 
@@ -195,7 +196,7 @@ module.exports = [
       input.includes('恩') ||
       input.includes('sure') ||
       input.includes('y')) {
-      session.send('讓仙女翻翻魔法書~~ ');
+      session.send('讓' + NICKNAME + '翻翻魔法書~~ ');
       await reply.Products(session, session.dialogData.fortuneData);
       session.send('希望能讓你的運氣更佳!');
     } else {

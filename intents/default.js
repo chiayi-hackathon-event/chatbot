@@ -1,4 +1,4 @@
-var NICKNAME = require('./utility/nickname');
+var NICKNAME = require('../utility/nickname');
 const _ = require('underscore');
 const unirest = require("unirest");
 const debug = require('debug')('defaultHandler');
