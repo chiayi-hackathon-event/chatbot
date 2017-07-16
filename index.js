@@ -85,6 +85,8 @@ bot.dialog('/HotSpotLocation', require('./intents/findHotspotbylocation'));
 bot.dialog('/FindCharging', require('./intents/findchargingstation'));
 bot.dialog('/TWFunStore', require('./intents/findtwfunstore'));
 bot.dialog('/checkreservation', require('./intents/reservation'));
+bot.dialog('/findfood', require('./intents/findfood'));
+// bot.dialog('/findhotel', require('./intents/findhotel'));
 bot.dialog('/askFBLocation', [
   function(session, args, next) {
     if (session.dialogData.locationExists == null) {
@@ -120,6 +122,7 @@ intent.matches('FindHotSpotByLocation', '/HotSpotLocation');
 intent.matches('FindChargingStation', '/FindCharging');
 intent.matches('FindTWFunStore', '/TWFunStore');
 
+
 intent.matches('Greeting', [
   function(session, args, next) {
     session.send(greeting.generate());
@@ -139,6 +142,8 @@ intent.matches('FindSuitMe', '/findsuitme');
 intent.matches('Adopt', '/adopt');
 intent.matches('FortuneTeller', '/fortuneTeller');
 intent.matches('WeatherForecast', '/weatherForecast');
+intent.matches('FindFood', '/findfood');
+intent.matches('FindHotel', '/findhotel');
 // intent.matches('Today', '/today');
 
 intent.onDefault(require('./intents/default'));

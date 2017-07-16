@@ -19,9 +19,7 @@ module.exports = [
     //   session.send('那使用嘉義縣的位置吧!');
     // }
 
-    var desc = '餐館';
-    var body = await request.get(apiurl + '/green_store?lat=' + latitude + '&lng=' + longitude + '&desc=' + desc + '&limit=10&distance=100000');
-    // var body = await request.get(apiurl + '/store?lat=' + latitude + '&lng=' + longitude + '&limit=10&distance=100000');
+    var body = await request.get(apiurl + '/store?lat=' + latitude + '&lng=' + longitude + '&limit=10&distance=100000');
 
     var res = JSON.parse(body);
 
@@ -52,13 +50,12 @@ function createThumbnailCard(session, info) {
   if (info.promo !== null && info.promo !== '') {
     promo = info.promo;
   }
-  return new builder.ThumbnailCard(session)
+    return new builder.ThumbnailCard(session)
     .title(info.title)
-    .text(`地址: ${info.address} \n
+    .text(`地址: ${info.location} \n
+      優惠: ${promo}
       `)
     .images([
       builder.CardImage.create(session, info.image_1)
-    ]).buttons([
-      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', info.title)
     ]);
 }
