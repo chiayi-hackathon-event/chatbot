@@ -45,14 +45,19 @@ bot.on('conversationUpdate', function(message) {
         .text(NICKNAME + '說你好~~~'));
       bot.send(new builder.Message()
         .address(message.address)
-        .text(`目前讓台灣卡好玩的` + NICKNAME + `來介紹功能有  \n\n
-      1. 拍照給` + NICKNAME + `施魔法
-        - 上傳一張有你美美的照片
-      2. 猜猜今天的運勢
-        - 幫我算算今天的運氣
-      3. 瞭解今天天氣狀態
-        - 今天天氣如何呢?
-      `));
+        .text(`哈囉，我是口袋旅遊達人～${NICKNAME}，你可以問我🙋  \n\n
+- 景點查詢   \n\n
+    你可以這樣問我：上傳一張景點照片   \n\n
+- 景點預約   \n\n
+    你可以這樣問我：我想預約故宮南院   \n\n
+- 查詢住宿地點   \n\n
+    你可以這樣問我：我想找住的地方   \n\n
+- 天氣預報   \n\n
+    你可以這樣問我：今天天氣如何?   \n\n
+- 查詢電動車充電站   \n\n
+    你可以這樣問我：我要找電動車充電站   \n\n
+- 推薦美食餐廳     \n\n
+    你可以這樣問我：附近哪裡好吃`));
     }
   }
 });
