@@ -75,11 +75,14 @@ bot.dialog('/listFeature', require('./dialog/listfeature'));
 // bot.dialog('/today', require('./intents/today'));
 bot.dialog('/findsuitme', require('./intents/findsuitme'));
 bot.dialog('/adopt', require('./intents/adopt'));
+bot.dialog('/findhotel', require('./intents/findhotel'));
 
 bot.dialog('/fortuneTeller', require('./intents/fortune'));
 bot.dialog('/findfortune', require('./intents/fortune'));
 bot.dialog('/askSuitMe', require('./dialog/asksuitme'));
 bot.dialog('/askAdopt', require('./dialog/askadopt'));
+bot.dialog('/askhotellocation', require('./dialog/askhotellocation'));
+
 bot.dialog('/weatherForecast', require('./intents/weather'));
 bot.dialog('/HotSpotLocation', require('./intents/findHotspotbylocation'));
 bot.dialog('/FindCharging', require('./intents/findchargingstation'));
