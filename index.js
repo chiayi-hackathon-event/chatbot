@@ -132,7 +132,12 @@ bot.dialog('/askFBLocation', [
 ]);
 require('./intents/gossip')(intent);
 
-intent.matches('FindHotSpotByImg', '/askhotspot');
+// intent.matches('FindHotSpotByImg', '/askhotspot');
+intent.matches('FindHotSpotByImg', [
+  function(session, args, next) {
+    session.send('請直接上傳圖片就好!!');
+  }
+]);
 intent.matches('CheckReservation', '/checkreservation');
 
 intent.matches('TellTired', require('./intents/tired'));
