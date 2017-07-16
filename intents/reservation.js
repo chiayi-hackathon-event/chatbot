@@ -19,33 +19,33 @@ module.exports = [
 
     var attachments = [];
     console.log('res', res);
-    var template = `故宮南院 常設展 \n\n
-    ${today} 可預約時間 \n\n
-     \n\n`;
+    // var template = `故宮南院 常設展 \n\n
+    // ${today} 可預約時間 \n\n
+    //  \n\n`;
 
     if (res.data.length) {
-      // res.data.forEach(function (w) {
-        // var card = createThumbnailCard(session, w);
-      //   attachments.push(card);
-      // });
-      for (var x = 0; x < res.data.length; x++) {
-        var time = res.data[x].time.slice(0, 2) + ':' + res.data[x].time.slice(2, 4);
-        template = template + `${time} - ${res.data[x].ticket} 張票 \n\n`;
-      }
-      template = template + `可以在以下網站預約 \n\n
-      https://tickets.npm.gov.tw/ \n\n`;
-      session.send(template);
-      session.endDialog();
+      res.data.forEach(function (w) {
+        var card = createThumbnailCard(session, w);
+        attachments.push(card);
+      });
+      // for (var x = 0; x < res.data.length; x++) {
+      //   var time = res.data[x].time.slice(0, 2) + ':' + res.data[x].time.slice(2, 4);
+      //   template = template + `${time} - ${res.data[x].ticket} 張票 \n\n`;
+      // }
+      // template = template + `可以在以下網站預約 \n\n
+      // https://tickets.npm.gov.tw/ \n\n`;
+      // session.send(template);
+      // session.endDialog();
       
     } else {
       session.send('很抱歉~預約已滿');
       session.endDialog();
     }
 
-    // var reply = new builder.Message(session)
-      // .attachmentLayout(builder.AttachmentLayout.carousel)
-      // .attachments(attachments);
-    // session.send(reply);
+    var reply = new builder.Message(session)
+      .attachmentLayout(builder.AttachmentLayout.carousel)
+      .attachments(attachments);
+    session.send(reply);
 
   }
 ];
