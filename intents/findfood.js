@@ -24,8 +24,8 @@ module.exports = [
   async(session, results) => {
     var entityList = session.message.entities;
 
-    var latitude = '23.4731294';
-    var longitude = '120.29271649999998';
+    var latitude = '23.4518428';
+    var longitude = '120.25546150000002';
 
     if (Array.isArray(entityList) && entityList.length > 0) {
       latitude = entityList[0].geo.latitude;
@@ -63,14 +63,19 @@ module.exports = [
 ];
 
 function createThumbnailCard(session, info) {
-  var image = 'https://maps.googleapis.com/maps/api/staticmap?center=' + info.lat + ',' + info.lng + '&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:' + info.lat + ',' + info.lng + '&key=';
+  var image = '';
+  if (info.image_1) {
+    image = info.image_1;
+  } else {
+    image = 'https://maps.googleapis.com/maps/api/staticmap?center=' + info.lat + ',' + info.lng + '&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:' + info.lat + ',' + info.lng + '&key=';
+  }
   return new builder.HeroCard(session)
     .title(info.title)
     .subtitle(info.phone)
     .text(`地址: ${info.address} \n\n
       `)
     .images([
-      builder.CardImage.create(session, info.image_1)
+      builder.CardImage.create(session, image)
     ]).buttons([
       builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', info.title)
     ]);
