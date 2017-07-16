@@ -159,5 +159,6 @@ intent.matches('FortuneTeller', '/fortuneTeller');
 intent.matches('WeatherForecast', '/weatherForecast');
 intent.matches('FindFood', '/findfood');
 intent.matches('FindHotel', '/findhotel');
+intent.matches('ListFeatures', '/listFeature');
 
 intent.onDefault(require('./intents/default'));
