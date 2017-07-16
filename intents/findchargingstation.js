@@ -28,9 +28,9 @@ module.exports = [
     var longitude = '120.29271649999998';
 
     // if (Array.isArray(entityList) && entityList.length > 0) {
-    if(session.dialogData.latitude != null) {
-      latitude = session.dialogData.latitude;
-      longitude = session.dialogData.longitude;
+    if(session.userData.latitude != null) {
+      latitude = session.userData.latitude;
+      longitude = session.userData.longitude;
       // latitude = entityList[0].geo.latitude;
       // longitude = entityList[0].geo.longitude;
     } else {
