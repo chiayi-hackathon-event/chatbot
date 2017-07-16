@@ -12,6 +12,6 @@ module.exports = [
     session.send('請直接上傳圖片就好!!');
 
 
-    session.endDialogWithResult(results);
+    // session.endDialogWithResult(results);
   }
 ];
