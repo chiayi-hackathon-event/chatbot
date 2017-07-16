@@ -92,7 +92,7 @@ bot.dialog('/findfood', require('./intents/findfood'));
 // bot.dialog('/findhotel', require('./intents/findhotel'));
 bot.dialog('/askFBLocation', [
   function(session, args, next) {
-    if(session.dialogData.forcegps == false && session.dialogData.latitude != null && session.dialogData.longitude != null) {
+    if(session.dialogData.forcegps == null && session.dialogData.latitude != null && session.dialogData.longitude != null) {
       session.endDialogWithResult(session);
     }
     else if (session.dialogData.locationExists == null) {
@@ -119,6 +119,9 @@ bot.dialog('/askFBLocation', [
       if (Array.isArray(entityList) && entityList.length > 0) {
         var latitude = entityList[0].geo.latitude;
         var longitude = entityList[0].geo.longitude;
+
+        console.log('latitude =' + latitude);
+        console.log('longitude =' + longitude);
 
         session.dialogData.latitude = latitude;
         session.dialogData.longitude = longitude;
