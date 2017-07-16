@@ -122,7 +122,7 @@ intent.matches('FindTWFunStore', '/TWFunStore');
 
 intent.matches('Greeting', [
   function(session, args, next) {
-    session.send(greeting.generate());
+    session.send('哈囉，我是口袋旅遊達人~蓋兒，請問你想去哪裡玩🙋');
   }
 ]);
 
