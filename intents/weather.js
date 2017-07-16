@@ -28,9 +28,9 @@ module.exports = [
     // if (Array.isArray(entityList) && entityList.length > 0) {
     //   latitude = entityList[0].geo.latitude;
     //   longitude = entityList[0].geo.longitude;
-    if(session.dialogData.latitude != null) {
-      latitude = session.dialogData.latitude;
-      longitude = session.dialogData.longitude;
+    if(session.userData.latitude != null) {
+      latitude = session.userData.latitude;
+      longitude = session.userData.longitude;
     } else {
       session.send('那使用嘉義縣的位置吧!');
     }
