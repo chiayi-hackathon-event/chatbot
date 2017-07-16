@@ -7,17 +7,6 @@ var fortuneTeller = require('./fortune');
 
 module.exports = [
   async(session, args, next) => {
-    // var message = new builder.Message(session)
-    //   .text("麻煩先請按下按鈕傳送你的位置")
-    //   .sourceEvent({
-    //     facebook: {
-    //       "quick_replies": [{
-    //         "content_type": "location",
-    //       }]
-    //     }
-    //   })
-    // builder.Prompts.text(session, message);
-    // console.log(session);
     session.beginDialog('/askFBLocation');
 
   },
@@ -27,9 +16,6 @@ module.exports = [
     var latitude = '23.4518428';
     var longitude = '120.25546150000002';
 
-    // if (Array.isArray(entityList) && entityList.length > 0) {
-    //   latitude = entityList[0].geo.latitude;
-    //   longitude = entityList[0].geo.longitude;
     if(session.userData.latitude != null) {
       latitude = session.userData.latitude;
       longitude = session.userData.longitude;
