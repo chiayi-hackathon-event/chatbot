@@ -65,7 +65,6 @@ function createThumbnailCard(session, info) {
     .title(info.title)
     .text(`地址: ${info.address} \n\n
       位置: ${info.local} \n\n
-      價格: ${info.cost}
       `)
     .images([
       builder.CardImage.create(session, image)
