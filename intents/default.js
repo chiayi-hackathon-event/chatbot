@@ -2,6 +2,7 @@ var NICKNAME = require('../utility/nickname');
 const _ = require('underscore');
 const unirest = require("unirest");
 const debug = require('debug')('defaultHandler');
+var builder = require('botbuilder');
 
 const oxford = require('../Congitives/oxford');
 var random = require("../utility/random");
