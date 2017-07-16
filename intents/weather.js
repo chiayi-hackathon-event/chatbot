@@ -17,6 +17,7 @@ module.exports = [
     //     }
     //   })
     // builder.Prompts.text(session, message);
+    session.userData.forcegps = true;
     session.beginDialog('/askFBLocation');
   },
   async(session, results) => {
