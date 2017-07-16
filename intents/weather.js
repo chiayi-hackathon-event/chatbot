@@ -8,7 +8,7 @@ var fortuneTeller = require('./fortune');
 module.exports = [
   async(session, args, next) => {
     // var message = new builder.Message(session)
-    //   .text("麻煩先請按下按鈕傳送你的位置 (若沒辦法按下按鈕就輸入\"沒辦法\"吧)")
+    //   .text("麻煩先請按下按鈕傳送你的位置")
     //   .sourceEvent({
     //     facebook: {
     //       "quick_replies": [{

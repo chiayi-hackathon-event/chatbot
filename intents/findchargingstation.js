@@ -8,7 +8,7 @@ var fortuneTeller = require('./fortune');
 module.exports = [
   async(session, args, next) => {
     // var message = new builder.Message(session)
-    //   .text("麻煩先請按下按鈕傳送你的位置 (若沒辦法按下按鈕就輸入\"沒辦法\"吧)")
+    //   .text("麻煩先請按下按鈕傳送你的位置")
     //   .sourceEvent({
     //     facebook: {
     //       "quick_replies": [{
@@ -24,14 +24,14 @@ module.exports = [
   async(session, results) => {
     var entityList = session.message.entities;
 
-    var latitude = '23.4518428';
-    var longitude = '120.25546150000002';
+    var latitude = '23.4731294';
+    var longitude = '120.29271649999998';
 
     if (Array.isArray(entityList) && entityList.length > 0) {
       latitude = entityList[0].geo.latitude;
       longitude = entityList[0].geo.longitude;
     } else {
-      session.send('那使用嘉義縣的位置吧!');
+      session.send('那我來找找故宮南院附近的充電站!');
     }
 
     var body = await request.get(apiurl + '/power?lat=' + latitude + '&lng=' + longitude + '&limit=5&distance=10000');

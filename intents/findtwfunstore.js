@@ -9,8 +9,8 @@ module.exports = [
   async(session, args, next) => {
     // var entityList = session.message.entities;
 
-    var latitude = '23.0251582';
-    var longitude = '119.977076';
+    var latitude = '23.4518428';
+    var longitude = '120.25546150000002';
 
     // if (Array.isArray(entityList) && entityList.length > 0) {
     //   latitude = entityList[0].geo.latitude;
@@ -19,7 +19,9 @@ module.exports = [
     //   session.send('那使用嘉義縣的位置吧!');
     // }
 
-    var body = await request.get(apiurl + '/store?lat=' + latitude + '&lng=' + longitude + '&limit=10&distance=100000');
+    var desc = '餐館';
+    var body = await request.get(apiurl + '/green_store?lat=' + latitude + '&lng=' + longitude + '&desc=' + desc + '&limit=10&distance=100000');
+    // var body = await request.get(apiurl + '/store?lat=' + latitude + '&lng=' + longitude + '&limit=10&distance=100000');
 
     var res = JSON.parse(body);
 
@@ -52,10 +54,11 @@ function createThumbnailCard(session, info) {
   }
   return new builder.ThumbnailCard(session)
     .title(info.title)
-    .text(`地址: ${info.location} \n
-      優惠: ${promo}
+    .text(`地址: ${info.address} \n
       `)
     .images([
       builder.CardImage.create(session, info.image_1)
+    ]).buttons([
+      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', info.title)
     ]);
 }

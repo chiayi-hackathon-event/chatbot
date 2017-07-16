@@ -42,17 +42,15 @@ bot.on('conversationUpdate', function(message) {
     if (membersAdded) {
       bot.send(new builder.Message()
         .address(message.address)
-        .text('台灣卡好玩說你好~~~'));
+        .text(NICKNAME + '說你好~~~'));
       bot.send(new builder.Message()
         .address(message.address)
         .text(`目前讓台灣卡好玩的` + NICKNAME + `來介紹功能有  \n\n
-      1. 跟` + NICKNAME + `撒嬌
-        - 我不知道什麼適合我....
-      2. 拍照給` + NICKNAME + `施魔法
+      1. 拍照給` + NICKNAME + `施魔法
         - 上傳一張有你美美的照片
-      3. 猜猜今天的運勢
+      2. 猜猜今天的運勢
         - 幫我算算今天的運氣
-      5. 瞭解今天天氣狀態
+      3. 瞭解今天天氣狀態
         - 今天天氣如何呢?
       `));
     }
@@ -91,7 +89,7 @@ bot.dialog('/askFBLocation', [
   function(session, args, next) {
     if (session.dialogData.locationExists == null) {
       var message = new builder.Message(session)
-        .text("麻煩先請按下按鈕傳送你的位置 (若沒辦法按下按鈕就輸入\"沒辦法\"吧)")
+        .text("麻煩先請按下按鈕傳送你的位置")
         .sourceEvent({
           facebook: {
             "quick_replies": [{
