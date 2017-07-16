@@ -46,6 +46,7 @@ module.exports = [
       .attachmentLayout(builder.AttachmentLayout.carousel)
       .attachments(attachments);
     session.send(reply);
+    session.endDialog();
 
   }
 ];
@@ -67,6 +68,6 @@ function createThumbnailCard(session, info) {
       可預約人數: ${info.ticket}
       `)
     .buttons([
-      builder.CardAction.openUrl(session, url, '預約')
+      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', info.title)
     ]);
 }
