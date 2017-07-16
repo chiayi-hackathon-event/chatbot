@@ -92,7 +92,10 @@ bot.dialog('/findfood', require('./intents/findfood'));
 // bot.dialog('/findhotel', require('./intents/findhotel'));
 bot.dialog('/askFBLocation', [
   function(session, args, next) {
-    if (session.dialogData.locationExists == null) {
+    if(session.dialogData.forcegps == false && session.dialogData.latitude != null && session.dialogData.longitude != null) {
+      session.endDialogWithResult(session);
+    }
+    else if (session.dialogData.locationExists == null) {
       var message = new builder.Message(session)
         .text("麻煩先請按下按鈕傳送你的位置")
         .sourceEvent({
@@ -104,8 +107,23 @@ bot.dialog('/askFBLocation', [
         })
       session.send(message);
       session.dialogData.locationExists = true;
+      delete session.dialogData.forcegps;
     } else {
       delete session.dialogData.locationExists;
+
+      var entityList = session.message.entities;
+
+      // var latitude = '23.4731294';
+      // var longitude = '120.29271649999998';
+
+      if (Array.isArray(entityList) && entityList.length > 0) {
+        var latitude = entityList[0].geo.latitude;
+        var longitude = entityList[0].geo.longitude;
+
+        session.dialogData.latitude = latitude;
+        session.dialogData.longitude = longitude;
+        session.dialogData.created = new Date();
+      }
       session.endDialogWithResult(session);
     }
   }

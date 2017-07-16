@@ -25,9 +25,12 @@ module.exports = [
     var latitude = '23.4243634';
     var longitude = '119.977076';
 
-    if (Array.isArray(entityList) && entityList.length > 0) {
-      latitude = entityList[0].geo.latitude;
-      longitude = entityList[0].geo.longitude;
+    // if (Array.isArray(entityList) && entityList.length > 0) {
+    //   latitude = entityList[0].geo.latitude;
+    //   longitude = entityList[0].geo.longitude;
+    if(session.dialogData.latitude != null) {
+      latitude = session.dialogData.latitude;
+      longitude = session.dialogData.longitude;
     } else {
       session.send('那使用嘉義縣的位置吧!');
     }

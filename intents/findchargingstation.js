@@ -27,9 +27,12 @@ module.exports = [
     var latitude = '23.4731294';
     var longitude = '120.29271649999998';
 
-    if (Array.isArray(entityList) && entityList.length > 0) {
-      latitude = entityList[0].geo.latitude;
-      longitude = entityList[0].geo.longitude;
+    // if (Array.isArray(entityList) && entityList.length > 0) {
+    if(session.dialogData.latitude != null) {
+      latitude = session.dialogData.latitude;
+      longitude = session.dialogData.longitude;
+      // latitude = entityList[0].geo.latitude;
+      // longitude = entityList[0].geo.longitude;
     } else {
       session.send('那我來找找故宮南院附近的充電站!');
     }
