@@ -35,7 +35,7 @@ module.exports = [
     }
 
     var desc = '餐館';
-    var url = apiurl + '/green_store?lat=' + latitude + '&lng=' + longitude + '&limit=5&distance=1000000&desc=' + desc;
+    var url = apiurl + '/green_store?lat=' + latitude + '&lng=' + longitude + '&limit=5&distance=1000000&desc=' + encodeURI(desc);
     var body = await request.get(url);
     console.log(url);
 
