@@ -62,6 +62,6 @@ function createThumbnailCard(session, info) {
     .images([
       builder.CardImage.create(session, info.image_1)
     ]).buttons([
-      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', info.title)
+      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', '前往導航')
     ]);
 }

@@ -28,6 +28,7 @@ module.exports = [
         var card = createThumbnailCard(session, w);
         attachments.push(card);
       });
+      session.send('日期: ' + today);
       // for (var x = 0; x < res.data.length; x++) {
       //   var time = res.data[x].time.slice(0, 2) + ':' + res.data[x].time.slice(2, 4);
       //   template = template + `${time} - ${res.data[x].ticket} 張票 \n\n`;
@@ -68,6 +69,6 @@ function createThumbnailCard(session, info) {
       可預約人數: ${info.ticket}
       `)
     .buttons([
-      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', info.title)
+      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', '預約')
     ]);
 }
