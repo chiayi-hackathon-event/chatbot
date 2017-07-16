@@ -68,6 +68,6 @@ function createThumbnailCard(session, info) {
       可預約人數: ${info.ticket}
       `)
     .buttons([
-      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', info.title)
+      builder.CardAction.openUrl(session, 'https://www.google.com/maps/search/?api=1&query=' + info.lat + ',' + info.lng + '', '預約')
     ]);
 }
